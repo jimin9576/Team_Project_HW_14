@@ -159,7 +159,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public boolean OnMarkerClick(Marker marker) {
-        startActivity(new Intent(getApplicationContext(), UserInfo.class));
+        startActivity(new Intent(getApplicationContext(), UserInfoActivity.class));
         return false;
     }
 }
