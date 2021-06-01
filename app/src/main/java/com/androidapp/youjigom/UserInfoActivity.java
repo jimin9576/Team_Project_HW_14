@@ -36,7 +36,7 @@ public class UserInfoActivity extends AppCompatActivity {
         dBListView=findViewById(R.id.DBListView);
 
         adapter = new ArrayAdapter<String>(this,
-                android.R.layout.activity_list_item);
+                android.R.layout.simple_list_item_1);
         dBListView.setAdapter(adapter);
         getFirebaseDataBase();
 
