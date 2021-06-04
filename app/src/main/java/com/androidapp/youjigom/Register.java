@@ -99,7 +99,22 @@ public class Register extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                final String[] items = new String[]{"Korea" , "Japan", "America", "Thailand"};
+                final String[] items = new String[]{
+                        "미국",//0
+                        "영국",//1
+                        "프랑스",//2
+                        "남아프리카공화국",//3
+                        "이탈리아",//4
+                        "사우디아라비아",//5
+                        "인도",//6
+                        "러시아",//7
+                        "멕시코",//8
+                        "브라질",//9
+                        "아르헨티나",//10
+                        "태국",//11
+                        "중국",//12
+                        "일본",//13
+                        "대한민국"};//14
                 AlertDialog.Builder dialog = new AlertDialog.Builder(Register.this);
                 dialog.setTitle("Choose your country")
                         .setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {

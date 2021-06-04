@@ -20,7 +20,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YouJiGom">
-        <activity android:name=".UserInfoActivity"></activity>
+        <activity android:name=".UserInfo_number.UserInfo_14"></activity>
+        <activity android:name=".UserInfo_number.UserInfo_12" />
+        <activity android:name=".UserInfo_number.UserInfo_11" />
+        <activity android:name=".UserInfo_number.UserInfo_10" />
+        <activity android:name=".UserInfo_number.UserInfo_9" />
+        <activity android:name=".UserInfo_number.UserInfo_8" />
+        <activity android:name=".UserInfo_number.UserInfo_7" />
+        <activity android:name=".UserInfo_number.UserInfo_6" />
+        <activity android:name=".UserInfo_number.UserInfo_5" />
+        <activity android:name=".UserInfo_number.UserInfo_4" />
+        <activity android:name=".UserInfo_number.UserInfo_3" />
+        <activity android:name=".UserInfo_number.UserInfo_2" />
+        <activity android:name=".UserInfo_number.UserInfo_1" />
+        <activity android:name=".UserInfo_number.UserInfo_0" />
+        <activity android:name=".UserInfo_number.UserInfo_13" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -35,7 +49,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps2"></activity>
+            android:label="@string/title_activity_maps2" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".EditProfile" />
         <activity android:name=".Login" />
@@ -46,7 +60,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

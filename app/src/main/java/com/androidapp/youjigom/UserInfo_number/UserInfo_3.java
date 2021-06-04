@@ -1,4 +1,4 @@
-package com.androidapp.youjigom;
+package com.androidapp.youjigom.UserInfo_number;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.androidapp.youjigom.CameraActivity;
+import com.androidapp.youjigom.Locations;
+import com.androidapp.youjigom.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,12 +24,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserInfoActivity extends AppCompatActivity {
+public class UserInfo_3 extends AppCompatActivity {
 
     ListView dBListView;
     ArrayAdapter<String> adapter;
     static ArrayList<String> arrayIndex=new ArrayList<String>();
     static ArrayList<String> arrayData=new ArrayList<String>();
+    static com.androidapp.youjigom.Locations locations = new Locations();
+    double[][] locationsdata = locations.LatLng;
+    String[] CountryName = locations.countryName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +71,12 @@ public class UserInfoActivity extends AppCompatActivity {
                     String key=dataSnapshot.getKey();
                     com.androidapp.youjigom.FirebasePost get=dataSnapshot.getValue(com.androidapp.youjigom.FirebasePost.class);
                     String info[]={get.fullName, get.country};
-                    String result= "사용자 이름 : " + info[0] + "국적 : " +info[1];
-                    //String result=info[2];
-                    arrayData.add(result);
-                    arrayIndex.add(key);
+                    if(info[1].equals(CountryName[3])){
+                        String result = "사용자 이름 : " + info[0] + "국적 : " + info[1];
+                        //String result=info[2];
+                        arrayData.add(result);
+                        arrayIndex.add(key);
+                    }
                 }
                 adapter.clear();
                 adapter.addAll(arrayData);
