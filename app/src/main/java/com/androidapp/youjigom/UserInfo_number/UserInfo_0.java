@@ -73,7 +73,7 @@ public class UserInfo_0 extends AppCompatActivity {
                     String info[]={get.fullName, get.country};
 
                     if(info[1].equals(CountryName[0])){
-                        String result = "사용자 이름 : " + info[0] + "국적 : " + info[1];
+                        String result = "사용자 이름 : " + info[0] + "\n국적 : " + info[1];
                         //String result=info[2];
                         arrayData.add(result);
                         arrayIndex.add(key);

@@ -72,7 +72,7 @@ public class UserInfo_6 extends AppCompatActivity {
                     com.androidapp.youjigom.FirebasePost get=dataSnapshot.getValue(com.androidapp.youjigom.FirebasePost.class);
                     String info[]={get.fullName, get.country};
                     if(info[1].equals(CountryName[6])){
-                        String result = "사용자 이름 : " + info[0] + "국적 : " + info[1];
+                        String result = "사용자 이름 : " + info[0] + "\n국적 : " + info[1];
                         //String result=info[2];
                         arrayData.add(result);
                         arrayIndex.add(key);
