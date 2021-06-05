@@ -28,6 +28,7 @@ public class UserInfo_0 extends AppCompatActivity {
 
     ListView dBListView;
     ArrayAdapter<String> adapter;
+    private static String LVitem;
     static ArrayList<String> arrayIndex=new ArrayList<String>();
     static ArrayList<String> arrayData=new ArrayList<String>();
     static Locations locations = new Locations();
@@ -50,13 +51,24 @@ public class UserInfo_0 extends AppCompatActivity {
         dBListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String LVitem = (String) dBListView.getAdapter().getItem(position);  //리스트뷰의 포지션 내용을 가져옴.
+                setListViewItem(LVitem);
 
+                //추가된 내용
                 Intent intent = new Intent(view.getContext(), CameraActivity.class);
                 view.getContext().startActivity(intent);
+
 
             }
         });
 
+    }
+    //추가된 내용
+    public static String getListViewItem() {
+        return LVitem;
+    }
+    public void setListViewItem(String LVitem) {
+        this.LVitem = LVitem;
     }
 
 
