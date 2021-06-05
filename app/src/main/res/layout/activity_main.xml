@@ -12,6 +12,7 @@
         android:id="@+id/profileCountry"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="8dp"
         android:text="country information"
         android:textSize="16sp"
@@ -38,22 +39,24 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="396dp"
+        android:layout_height="47dp"
+        android:background="@drawable/register_button_ui"
         android:onClick="logout"
         android:text="Logout"
+        android:textColor="#191717"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resetPasswordLocal" />
+        app:layout_constraintEnd_toEndOf="@+id/resetPasswordLocal"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/resetPasswordLocal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.878" />
 
     <ImageView
         android:id="@+id/profileImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="109dp"
+        android:layout_height="99dp"
+        android:background="@drawable/register_button_ui"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -66,6 +69,7 @@
         android:id="@+id/profileName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -133,20 +137,21 @@
         android:id="@+id/resetPasswordLocal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:background="@drawable/register_button_ui"
         android:text="Reset Password"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#0E0E0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/changeProfile"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/changeProfile"
         app:layout_constraintTop_toBottomOf="@+id/changeProfile"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.083" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:text="Full Name"
@@ -168,17 +173,19 @@
 
     <ImageView
         android:id="@+id/imageView2"
+        android:background="@drawable/register_button_ui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImage"
-        app:layout_constraintVertical_bias="0.050000012"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_person_black_24dp" />
 
     <ImageView
         android:id="@+id/imageView3"
+        android:background="@drawable/register_button_ui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -189,6 +196,7 @@
 
     <ImageView
         android:id="@+id/imageView4"
+        android:background="@drawable/register_button_ui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -212,29 +220,36 @@
         android:id="@+id/changeProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/register_button_ui"
         android:text="Change Profile"
+        android:textColor="#0B0A0A"
         app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Next"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/Next"
         app:layout_constraintTop_toBottomOf="@+id/profilePhone"
-        app:layout_constraintVertical_bias="0.629" />
+        app:layout_constraintVertical_bias="0.472" />
 
     <Button
         android:id="@+id/Next"
-        android:layout_width="392dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="4dp"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/register_button_ui"
         android:text="Map"
+        android:textColor="#101010"
         app:layout_constraintBottom_toTopOf="@+id/changeProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
+        android:background="@drawable/register_button_ui"
         android:layout_width="25dp"
         android:layout_height="26dp"
         android:layout_marginTop="40dp"
