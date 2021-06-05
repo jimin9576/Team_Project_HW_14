@@ -124,11 +124,8 @@
 
     <TextView
         android:id="@+id/country"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="200dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:background="@drawable/register_button_ui"
         android:ems="10"
         android:hint="Country"
@@ -138,10 +135,9 @@
         android:textColorHint="#2196F3"
         android:textSize="14sp"
         android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintBottom_toTopOf="@+id/registerBtn"
+        app:layout_constraintStart_toStartOf="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
 
     <Button
         android:id="@+id/registerBtn"
@@ -208,10 +204,9 @@
 
     <Button
         android:id="@+id/choose"
-        android:layout_width="97dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginEnd="100dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
         android:background="@drawable/register_button_ui"
         android:includeFontPadding="false"
         android:text="Option"
@@ -219,8 +214,10 @@
         android:textColorHint="#2196F3"
         android:textSize="9sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="@+id/country"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/country" />
+        app:layout_constraintBottom_toTopOf="@+id/registerBtn"
+        app:layout_constraintEnd_toEndOf="@+id/phone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/country"
+        app:layout_constraintTop_toBottomOf="@+id/phone"
+        app:layout_constraintVertical_bias="0.515" />
 </androidx.constraintlayout.widget.ConstraintLayout>
