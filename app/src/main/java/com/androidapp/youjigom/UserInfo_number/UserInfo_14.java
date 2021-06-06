@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,7 +40,8 @@ public class UserInfo_14 extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-    public ArrayList<String> userinfo = new ArrayList<String>();
+    public ArrayList<String> userName = new ArrayList<String>();
+    public ArrayList<String> userCountry = new ArrayList<String>();
     public String Image;
     public String Name;
     public String Country;
@@ -64,10 +66,16 @@ public class UserInfo_14 extends AppCompatActivity {
                 Map<String, Object> childUpdates=new HashMap<>();
                 Map<String, Object> postValues=null;
 
-                com.androidapp.youjigom.FirebasePost post=new com.androidapp.youjigom.FirebasePost("제발 되게 해주세요", Name, Country);
+                Log.e("몇번째", String.valueOf(position));
+                Log.e("이름", String.valueOf(userName));
+                Log.e("나라", String.valueOf(userCountry));
+
+                com.androidapp.youjigom.FirebasePost post=
+                        new com.androidapp.youjigom.FirebasePost
+                                ("진짜 제발 되게 해주세요", userName.get(position), userCountry.get(position));
                 postValues=post.toMap();
 
-                childUpdates.put("users/" + Name, postValues);
+                childUpdates.put("users/" + userName.get(position), postValues);
                 databaseReference.updateChildren(childUpdates);
 
             }
@@ -81,6 +89,8 @@ public class UserInfo_14 extends AppCompatActivity {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userName.clear();
+                userCountry.clear();
                 arrayData.clear();
                 arrayIndex.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
@@ -89,13 +99,13 @@ public class UserInfo_14 extends AppCompatActivity {
                     String info[]={get.fullName, get.country};
                     if (info[1].equals(CountryName[14])) {
                         String result = "사용자 이름 : " + info[0] + "\n국적 : " + info[1];
-                        String Result = info[0] + "," + info[1];
                         //String result=info[2];
                         arrayData.add(result);
                         arrayIndex.add(key);
                         Name = info[0];
                         Country = info[1];
-                        userinfo.add(Result);
+                        userName.add(info[0]);
+                        userCountry.add(info[1]);
                     }
                 }
                 adapter.clear();
