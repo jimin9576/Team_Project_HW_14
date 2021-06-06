@@ -16,7 +16,7 @@
 
             <Button
                 android:id="@+id/setting_btn"
-                android:fontFamily="@font/CookieRunBlack"
+                android:fontFamily="@font/cookierunblack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
@@ -34,7 +34,7 @@
             <Button
                 android:id="@+id/setting2_btn"
                 android:layout_width="match_parent"
-                android:fontFamily="@font/CookieRunBlack"
+                android:fontFamily="@font/cookierunblack"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
                 android:gravity="center_vertical"
@@ -55,7 +55,7 @@
                 android:background="@drawable/button_background"
                 android:gravity="center_vertical"
                 android:paddingLeft="8dp"
-                android:fontFamily="@font/CookieRunBlack"
+                android:fontFamily="@font/cookierunblack"
                 android:text="알림 설정"
                 android:textSize="16sp" />
 

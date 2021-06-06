@@ -39,7 +39,7 @@
         android:id="@+id/MyCountry"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:fontFamily="@font/CookieRunBlack"
+        android:fontFamily="@font/cookierunblack"
         android:gravity="center"
         android:hint="프로필 설정"
         android:textColor="#2196F3"

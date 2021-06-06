@@ -43,7 +43,7 @@
         android:layout_marginTop="44dp"
         android:background="?android:attr/activatedBackgroundIndicator"
         android:text="upload"
-        android:fontFamily="@font/CookieRunBlack"
+        android:fontFamily="@font/cookierunblack"
         android:textColor="#2196F3"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
