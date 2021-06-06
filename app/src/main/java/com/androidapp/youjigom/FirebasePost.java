@@ -13,15 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirebasePost {
-    public String Token;
+    public String image;
     public String fullName;
     public String country;
 
     public FirebasePost() {
     }
 
-    public FirebasePost(String Token, String fullName, String country) {
-        this.Token = Token;
+    public FirebasePost(String image, String fullName, String country) {
+        this.image = image;
         this.fullName = fullName;
         this.country = country;
     }
@@ -29,7 +29,7 @@ public class FirebasePost {
 
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("Token",Token);
+        result.put("image",image);
         result.put("fullName",fullName);
         result.put("country",country);
 
