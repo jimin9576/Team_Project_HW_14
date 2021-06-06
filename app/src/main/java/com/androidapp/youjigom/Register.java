@@ -52,7 +52,6 @@ public class Register extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userID;
     FirebaseDatabase fDatabase;
-    String Token;
     Button choose;
     String image;
 
@@ -238,31 +237,14 @@ public class Register extends AppCompatActivity {
 
                             Map<String, Object> childUpdates=new HashMap<>();
 
-                            FirebaseMessaging.getInstance().getToken()
-                                    .addOnCompleteListener(new OnCompleteListener<String>(){
+                            Map<String, Object> postValues=null;
 
-                                        @Override
-                                        public void onComplete(@NonNull Task<String> task) {
-                                            if (!task.isSuccessful()){
-                                                Log.w("tag", "failed", task.getException());
-                                                return;
-                                            }
+                            com.androidapp.youjigom.FirebasePost post=new com.androidapp.youjigom.FirebasePost(image, fullName, country);
+                            postValues=post.toMap();
 
-                                            Map<String, Object> postValues=null;
+                            childUpdates.put("/users/"+fullName,postValues);
+                            reference.updateChildren(childUpdates);
 
-                                            //디바이스 토큰을 받아옵니다!
-                                            String token = task.getResult();
-                                            Token = token;
-
-                                            com.androidapp.youjigom.FirebasePost post=new com.androidapp.youjigom.FirebasePost(image, fullName, country);
-                                            postValues=post.toMap();
-
-                                            childUpdates.put("/users/"+fullName,postValues);
-                                            reference.updateChildren(childUpdates);
-                                        }
-                                    });
-
-                            startActivity(new Intent(getApplicationContext(),Token.class));
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                         }else {

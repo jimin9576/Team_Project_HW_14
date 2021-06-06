@@ -73,8 +73,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".Token" />
-
         <service
             android:name=".MainActivity"
             android:exported="false">
