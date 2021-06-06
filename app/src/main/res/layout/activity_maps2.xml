@@ -22,11 +22,10 @@
 
     <Button
         android:id="@+id/profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="61dp"
+        android:layout_height="63dp"
         android:layout_marginBottom="250dp"
-        android:text="프로필 설정"
-        android:background="@drawable/register_button_ui"
+        android:background="@android:drawable/ic_menu_myplaces"
         android:textColor="#2196F3"
         android:textColorHighlight="#FFFFFF"
         android:textSize="13sp"
@@ -41,7 +40,7 @@
         android:layout_width="90dp"
         android:layout_height="40dp"
         android:gravity="center"
-        android:hint="My Country"
+        android:hint="프로필 설정"
         android:textColor="#2196F3"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="@color/black"
