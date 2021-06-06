@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YouJiGom">
-        <activity android:name=".UserInfo_number.UserInfo_14"></activity>
+        <activity android:name=".Setting"></activity>
+        <activity android:name=".UserInfo_number.UserInfo_14" />
         <activity android:name=".UserInfo_number.UserInfo_12" />
         <activity android:name=".UserInfo_number.UserInfo_11" />
         <activity android:name=".UserInfo_number.UserInfo_10" />
