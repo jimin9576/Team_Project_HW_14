@@ -13,11 +13,12 @@
         android:layout_width="350dp"
         android:layout_height="21dp"
 
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:text="country information"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -25,9 +26,10 @@
         android:id="@+id/textView6"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:text="country"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/profilePhone" />
 
@@ -36,13 +38,17 @@
         android:layout_width="400dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/register_button_ui"
         android:onClick="logout"
         android:text="Logout"
         android:textColor="#191717"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/resetPasswordLocal"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/resetPasswordLocal"
-        app:layout_constraintTop_toBottomOf="@+id/resetPasswordLocal" />
+        app:layout_constraintTop_toBottomOf="@+id/resetPasswordLocal"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/profileImage"
@@ -223,7 +229,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="25dp"
+        android:layout_width="0dp"
         android:layout_height="26dp"
         android:layout_marginStart="20dp"
         android:background="@drawable/register_button_ui"
