@@ -70,7 +70,7 @@ public class UserInfo_14 extends AppCompatActivity {
                 receiverName = userName.get(position);
                 receiverCountry = userCountry.get(position);
 
-                showMessage();
+                showMessage(); //dialog 메세지
 
             }
         });
