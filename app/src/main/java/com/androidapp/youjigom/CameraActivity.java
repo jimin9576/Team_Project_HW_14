@@ -45,7 +45,7 @@ import java.util.Date;
 public class CameraActivity extends AppCompatActivity {
 
     private static final String TAG = "KNLBDC";
-    private static Bitmap originalBm;
+    private static String StringImage;
 
     private Boolean isPermission = true;
 
@@ -230,22 +230,27 @@ public class CameraActivity extends AppCompatActivity {
         Log.d(TAG, "setImage : " + tempFile.getAbsolutePath());
 
         imageView.setImageBitmap(originalBm);
-        setoriginalBm(originalBm);
+        StringImage=BitmapToString(originalBm);
+
+        setoriginalBm(StringImage);
         upload.setVisibility(View.VISIBLE);
         btnCamera.setVisibility(View.INVISIBLE);
         btnGallery.setVisibility(View.INVISIBLE);
 
+
         findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(getApplicationContext(),MapsActivity.class));
-
-                //UploadData();
-                //UploadImage.geturi(imguri, imgname);
             }
-        });    
-
+        });
+    }
+    //originalbm의 값을 호출해 주기 위해 사용한 getter setter
+    public static String getoriginalBm() {
+        return StringImage;
+    }
+    public void setoriginalBm(String StringImage) {
+        this.StringImage = StringImage;
     }
 
     //비트맵을 스트링으로 전환하는 코드
@@ -255,30 +260,6 @@ public class CameraActivity extends AppCompatActivity {
         byte[] bytes = baos.toByteArray();
         String temp = Base64.encodeToString(bytes, Base64.DEFAULT);
         return temp;
-    }
-
-    //originalbm의 값을 호출해 주기 위해 사용한 getter setter
-    public static Bitmap getoriginalBm() {
-        return originalBm;
-    }
-    public void setoriginalBm(Bitmap originalBm) {
-        this.originalBm = originalBm;
-    }
-
-    private void UploadData(){
-    //파이어 베이스 참조 코드
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-
-    //리스트 뷰에서 상대방 이름과/ 내이름/ 보내는 사진 받아옴
-        //이건 준영님이 구현 하셨다길래 임의로 설정했습니다.
-        String username = "이현호가";
-        String opponentname = "이현호에게";
-        String BitmapString = BitmapToString(getoriginalBm());
-
-    //리얼 타임 데베에 저장 구조에 따라서 .child()는 입맛대로 추가하시면 됩니다
-        mDatabaseReference.child("username").setValue("name : "+username);
-        mDatabaseReference.child("opponentname").setValue("name : "+opponentname);
-        mDatabaseReference.child("BitmapString").setValue(BitmapString);
     }
 
     /**

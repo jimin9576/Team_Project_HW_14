@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -65,6 +66,8 @@ public class UserInfo_14 extends AppCompatActivity {
 
                 Map<String, Object> childUpdates=new HashMap<>();
                 Map<String, Object> postValues=null;
+                CameraActivity ca = new CameraActivity();
+                String StringImage=ca.getoriginalBm();
 
                 Log.e("몇번째", String.valueOf(position));
                 Log.e("이름", String.valueOf(userName));
@@ -72,7 +75,7 @@ public class UserInfo_14 extends AppCompatActivity {
 
                 com.androidapp.youjigom.FirebasePost post=
                         new com.androidapp.youjigom.FirebasePost
-                                ("진짜 제발 되게 해주세요", userName.get(position), userCountry.get(position));
+                                (StringImage, userName.get(position), userCountry.get(position));
                 postValues=post.toMap();
 
                 childUpdates.put("users/" + userName.get(position), postValues);
