@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MapsActivity.class));
+                startActivity(new Intent(getApplicationContext(),CameraActivity.class));
             }
         });
 

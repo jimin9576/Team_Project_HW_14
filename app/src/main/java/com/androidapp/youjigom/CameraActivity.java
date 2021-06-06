@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,8 +23,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.androidapp.youjigom.UserInfo_number.UserInfo_0;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,15 +45,17 @@ import java.util.Date;
 public class CameraActivity extends AppCompatActivity {
 
     private static final String TAG = "KNLBDC";
+    private static String StringImage;
 
     private Boolean isPermission = true;
 
     private static final int PICK_FROM_ALBUM = 1;
     private static final int PICK_FROM_CAMERA = 2;
+    private DatabaseReference mDatabaseReference;
 
     private Boolean isCamera = false;
     private File tempFile;
-    Button upload;
+    Button upload,btnCamera, btnGallery;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +63,8 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_get_image);
 
         upload = findViewById(R.id.upload);
+        btnCamera= findViewById(R.id.btnCamera);
+        btnGallery = findViewById(R.id.btnGallery);
         upload.setVisibility(View.INVISIBLE);
 
 
@@ -222,54 +230,36 @@ public class CameraActivity extends AppCompatActivity {
         Log.d(TAG, "setImage : " + tempFile.getAbsolutePath());
 
         imageView.setImageBitmap(originalBm);
+        StringImage=BitmapToString(originalBm);
+
+        setoriginalBm(StringImage);
         upload.setVisibility(View.VISIBLE);
+        btnCamera.setVisibility(View.INVISIBLE);
+        btnGallery.setVisibility(View.INVISIBLE);
+
 
         findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UploadImage();
-                //UploadImage.geturi(imguri, imgname);
-            }
-        });    
-
-    }
-
-    private void UploadImage(){
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        ImageView imageView = findViewById(R.id.imageView);
-
-        Uri imguri = Uri.parse(tempFile.getAbsolutePath());
-        String imgname = (tempFile.getName());
-
-        StorageReference ImageRef = storageRef.child(imgname);
-        StorageReference UriRef = storageRef.child(String.valueOf(imguri));
-
-        ImageRef.getName().equals(UriRef.getName());    // true
-        ImageRef.getPath().equals(UriRef.getPath());    // false
-
-        imageView.setDrawingCacheEnabled(true);
-        imageView.buildDrawingCache();
-        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
-
-        UploadTask uploadTask = ImageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(getApplicationContext(), "전송성공!", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(),MapsActivity.class));
             }
         });
+    }
+    //originalbm의 값을 호출해 주기 위해 사용한 getter setter
+    public static String getoriginalBm() {
+        return StringImage;
+    }
+    public void setoriginalBm(String StringImage) {
+        this.StringImage = StringImage;
+    }
 
-
-
+    //비트맵을 스트링으로 전환하는 코드
+    public static String BitmapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
+        byte[] bytes = baos.toByteArray();
+        String temp = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return temp;
     }
 
     /**

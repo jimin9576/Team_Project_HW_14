@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,7 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserInfo_14 extends AppCompatActivity {
 
@@ -33,6 +37,15 @@ public class UserInfo_14 extends AppCompatActivity {
     static com.androidapp.youjigom.Locations locations = new Locations();
     double[][] locationsdata = locations.LatLng;
     String[] CountryName = locations.countryName;
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+
+    public ArrayList<String> userName = new ArrayList<String>();
+    public ArrayList<String> userCountry = new ArrayList<String>();
+    public String Image;
+    public String Name;
+    public String Country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +64,22 @@ public class UserInfo_14 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(view.getContext(), CameraActivity.class);
-                view.getContext().startActivity(intent);
+                Map<String, Object> childUpdates=new HashMap<>();
+                Map<String, Object> postValues=null;
+                CameraActivity ca = new CameraActivity();
+                String StringImage=ca.getoriginalBm();
+
+                Log.e("몇번째", String.valueOf(position));
+                Log.e("이름", String.valueOf(userName));
+                Log.e("나라", String.valueOf(userCountry));
+
+                com.androidapp.youjigom.FirebasePost post=
+                        new com.androidapp.youjigom.FirebasePost
+                                (StringImage, userName.get(position), userCountry.get(position));
+                postValues=post.toMap();
+
+                childUpdates.put("users/" + userName.get(position), postValues);
+                databaseReference.updateChildren(childUpdates);
 
             }
         });
@@ -65,6 +92,8 @@ public class UserInfo_14 extends AppCompatActivity {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userName.clear();
+                userCountry.clear();
                 arrayData.clear();
                 arrayIndex.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
@@ -76,6 +105,10 @@ public class UserInfo_14 extends AppCompatActivity {
                         //String result=info[2];
                         arrayData.add(result);
                         arrayIndex.add(key);
+                        Name = info[0];
+                        Country = info[1];
+                        userName.add(info[0]);
+                        userCountry.add(info[1]);
                     }
                 }
                 adapter.clear();

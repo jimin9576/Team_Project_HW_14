@@ -54,6 +54,7 @@ public class Register extends AppCompatActivity {
     FirebaseDatabase fDatabase;
     String Token;
     Button choose;
+    String image;
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -253,7 +254,7 @@ public class Register extends AppCompatActivity {
                                             String token = task.getResult();
                                             Token = token;
 
-                                            com.androidapp.youjigom.FirebasePost post=new com.androidapp.youjigom.FirebasePost(Token, fullName, country);
+                                            com.androidapp.youjigom.FirebasePost post=new com.androidapp.youjigom.FirebasePost(image, fullName, country);
                                             postValues=post.toMap();
 
                                             childUpdates.put("/users/"+fullName,postValues);
