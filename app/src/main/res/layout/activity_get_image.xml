@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_picture"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_picture"
     tools:context=".CameraActivity">
 
 
@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/upload"
         app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upload"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.368" />
 
     <Button
@@ -33,19 +33,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toEndOf="@+id/upload"
-        app:layout_constraintTop_toBottomOf="@+id/upload"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.358" />
 
     <Button
         android:id="@+id/upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="?android:attr/activatedBackgroundIndicator"
-        android:text="upload"
         android:fontFamily="@font/cookierunblack"
-        android:textColor="#2196F3"
+        android:text="upload"
+        android:textColor="#F3217C"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -55,7 +54,7 @@
         android:layout_width="262dp"
         android:layout_height="409dp"
         android:layout_marginStart="27dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="27dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
