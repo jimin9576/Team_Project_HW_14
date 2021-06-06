@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/walpaper"
+    android:background="@drawable/background_picture"
     tools:context=".MainActivity">
 
 
@@ -12,7 +12,7 @@
         android:id="@+id/profileCountry"
         android:layout_width="350dp"
         android:layout_height="21dp"
-
+        android:fontFamily="@font/CookieRunBlack"
         android:layout_marginTop="4dp"
         android:text="country information"
         android:textSize="16sp"
@@ -26,6 +26,7 @@
         android:id="@+id/textView6"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/CookieRunBlack"
         android:layout_marginTop="4dp"
         android:text="국적"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +39,9 @@
         android:layout_width="300dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/CookieRunBlack"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/register_button_ui"
+        android:background="@drawable/button_background"
         android:onClick="logout"
         android:text="Logout"
         android:textColor="#191717"
@@ -53,6 +55,7 @@
     <ImageView
         android:id="@+id/profileImage"
         android:layout_width="98dp"
+        android:fontFamily="@font/CookieRunBlack"
         android:layout_height="82dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,8 +118,8 @@
 
     <Button
         android:id="@+id/resendCode"
-        android:layout_width="112dp"
-        android:layout_height="51dp"
+        android:layout_width="1dp"
+        android:layout_height="3dp"
         android:background="?attr/actionBarItemBackground"
         android:text="Verify Now"
         android:textColor="#F4511E"
@@ -133,9 +136,11 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/register_button_ui"
+        android:background="@drawable/button_background"
         android:text="패스워드 재설정"
+        android:fontFamily="@font/CookieRunBlack"
         android:textColor="#0E0E0E"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/changeProfile"
         app:layout_constraintStart_toStartOf="@+id/changeProfile"
         app:layout_constraintTop_toBottomOf="@+id/changeProfile" />
@@ -144,7 +149,7 @@
         android:id="@+id/textView3"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-
+        android:fontFamily="@font/CookieRunBlack"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="이름"
@@ -157,6 +162,7 @@
         android:id="@+id/textView4"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/CookieRunBlack"
         android:layout_marginTop="10dp"
         android:text="Email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -196,6 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="전화번호"
+        android:fontFamily="@font/CookieRunBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
@@ -205,9 +212,11 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/register_button_ui"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/CookieRunBlack"
         android:text="프로필 변경"
         android:textColor="#0B0A0A"
+        android:textStyle=""
         app:layout_constraintEnd_toEndOf="@+id/Next"
         app:layout_constraintStart_toStartOf="@+id/Next"
         app:layout_constraintTop_toBottomOf="@+id/Next" />
@@ -240,6 +249,7 @@
         android:layout_height="wrap_content"
         android:text="To the Map!!!"
         android:textColor="#121111"
+        android:fontFamily="@font/CookieRunBlack"
         android:textColorHint="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/Next"
