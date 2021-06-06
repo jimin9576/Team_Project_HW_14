@@ -22,7 +22,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserInfo_14 extends AppCompatActivity {
 
@@ -33,6 +35,14 @@ public class UserInfo_14 extends AppCompatActivity {
     static com.androidapp.youjigom.Locations locations = new Locations();
     double[][] locationsdata = locations.LatLng;
     String[] CountryName = locations.countryName;
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+
+    public ArrayList<String> userinfo = new ArrayList<String>();
+    public String Image;
+    public String Name;
+    public String Country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +61,14 @@ public class UserInfo_14 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(view.getContext(), CameraActivity.class);
-                view.getContext().startActivity(intent);
+                Map<String, Object> childUpdates=new HashMap<>();
+                Map<String, Object> postValues=null;
+
+                com.androidapp.youjigom.FirebasePost post=new com.androidapp.youjigom.FirebasePost("제발 되게 해주세요", Name, Country);
+                postValues=post.toMap();
+
+                childUpdates.put("users/" + Name, postValues);
+                databaseReference.updateChildren(childUpdates);
 
             }
         });
@@ -73,9 +89,13 @@ public class UserInfo_14 extends AppCompatActivity {
                     String info[]={get.fullName, get.country};
                     if (info[1].equals(CountryName[14])) {
                         String result = "사용자 이름 : " + info[0] + "\n국적 : " + info[1];
+                        String Result = info[0] + "," + info[1];
                         //String result=info[2];
                         arrayData.add(result);
                         arrayIndex.add(key);
+                        Name = info[0];
+                        Country = info[1];
+                        userinfo.add(Result);
                     }
                 }
                 adapter.clear();

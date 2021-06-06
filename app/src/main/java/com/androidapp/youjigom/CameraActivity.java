@@ -238,9 +238,8 @@ public class CameraActivity extends AppCompatActivity {
         findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserInfo_0 UIA=new UserInfo_0();
-                String LV=UIA.getListViewItem();
-                Toast.makeText(getApplicationContext(),LV, Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getApplicationContext(),MapsActivity.class));
 
                 //UploadData();
                 //UploadImage.geturi(imguri, imgname);
