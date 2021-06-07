@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         resetPassLocal = findViewById(R.id.resetPasswordLocal);
         changeProfile = findViewById(R.id.changeProfile);
 
-        profileImage = findViewById(R.id.profileImage);
+
         changeProfileImage = findViewById(R.id.changeProfile);
         Next = findViewById(R.id.Next);
         ImgList = findViewById(R.id.btnImgList);
