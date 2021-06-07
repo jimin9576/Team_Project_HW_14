@@ -43,6 +43,7 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     public static final String TAG = "TAG";
+    private static String senderName;
     EditText mFullName,mEmail,mPassword,mPhone;
     TextView mCountry;
     Button mRegisterBtn;
@@ -239,8 +240,10 @@ public class Register extends AppCompatActivity {
 
                             Map<String, Object> postValues=null;
 
-                            com.androidapp.youjigom.FirebasePost post=new com.androidapp.youjigom.FirebasePost(image, fullName, country);
+                            com.androidapp.youjigom.FirebasePost post=new com.androidapp.youjigom.FirebasePost(image, fullName, country,senderName);
                             postValues=post.toMap();
+
+                            setSenderName(fullName);
 
                             childUpdates.put("/users/"+fullName,postValues);
                             reference.updateChildren(childUpdates);
@@ -263,5 +266,11 @@ public class Register extends AppCompatActivity {
             }
         });
 
+    }
+    public static String getSenderName() {
+        return senderName;
+    }
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
     }
 }

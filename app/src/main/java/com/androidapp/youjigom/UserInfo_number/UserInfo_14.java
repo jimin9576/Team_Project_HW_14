@@ -17,6 +17,7 @@ import android.widget.ListView;
 import com.androidapp.youjigom.CameraActivity;
 import com.androidapp.youjigom.Locations;
 import com.androidapp.youjigom.R;
+import com.androidapp.youjigom.Register;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,6 +49,7 @@ public class UserInfo_14 extends AppCompatActivity {
     public ArrayList<String> userCountry = new ArrayList<String>();
     public String receiverName;
     public String receiverCountry;
+    public String senderName;
 
 
     @Override
@@ -92,9 +94,12 @@ public class UserInfo_14 extends AppCompatActivity {
                 CameraActivity ca = new CameraActivity();
                 String StringImage=ca.getoriginalBm();
 
+                Register rg = new Register();
+                senderName = rg.getSenderName();
+
                 com.androidapp.youjigom.FirebasePost post=
                         new com.androidapp.youjigom.FirebasePost
-                                (StringImage, receiverName, receiverCountry);
+                                (StringImage, receiverName, receiverCountry, senderName);
                 postValues=post.toMap();
 
                 childUpdates.put("users/" + receiverName, postValues);
