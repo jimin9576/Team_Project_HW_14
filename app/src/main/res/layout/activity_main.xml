@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
         android:fontFamily="@font/cookierunblack"
-        android:text="업로드 한 사진 보기 !"
+        android:text="받은 사진 보기 !"
         android:textColor="#E53935"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"
