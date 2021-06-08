@@ -73,8 +73,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     StorageReference storageReference;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +83,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         country = findViewById(R.id.profileCountry);
         resetPassLocal = findViewById(R.id.resetPasswordLocal);
         changeProfile = findViewById(R.id.changeProfile);
-
-
         changeProfileImage = findViewById(R.id.changeProfile);
+
+
         Next = findViewById(R.id.Next);
         ImgList = findViewById(R.id.btnImgList);
         ImgList.setOnClickListener(new View.OnClickListener() {
@@ -112,13 +110,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
-        if (!user.isEmailVerified()) {
+        if(!user.isEmailVerified()){
             verifyMsg.setVisibility(View.VISIBLE);
             resendCode.setVisibility(View.VISIBLE);
 
             resendCode.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
+
                     user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -134,30 +133,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             });
         }
 
-
-       DocumentReference documentReference = fStore.collection("users").document(userId);
+        DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if (documentSnapshot != null && documentSnapshot.exists()) {
-                    phone.setText(documentSnapshot.getString("phone"));
-                    fullName.setText(documentSnapshot.getString("fName"));
-                    email.setText(documentSnapshot.getString("email"));
-                    country.setText(documentSnapshot.getString("country"));
+                if (e == null) {
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+                        phone.setText(documentSnapshot.getString("phone"));
+                        fullName.setText(documentSnapshot.getString("fName"));
+                        email.setText(documentSnapshot.getString("email"));
+                        country.setText(documentSnapshot.getString("country"));
 
-                } else {
-                    Log.d("tag", "onEvent: Document do not exists");
+                    } else {
+                        Log.d("tag", "onEvent: Document do not exists");
+                    }
                 }
             }
         });
-
-        Next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),CameraActivity.class));
-            }
-        });
-
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
                 passwordResetDialog.setTitle("Reset Password ?");
-                passwordResetDialog.setMessage("Enter New Password > 8 Characters long.");
+                passwordResetDialog.setMessage("Enter New Password > 6 Characters long.");
                 passwordResetDialog.setView(resetPassword);
 
                 passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -201,21 +193,91 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+
+
+/*       DocumentReference documentReference = fStore.collection("users").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    phone.setText(documentSnapshot.getString("phone"));
+                    fullName.setText(documentSnapshot.getString("fName"));
+                    email.setText(documentSnapshot.getString("email"));
+                    country.setText(documentSnapshot.getString("country"));
+
+                } else {
+                    Log.d("tag", "onEvent: Document do not exists");
+                }
+            }
+        });*/
+
+  /*        resetPassLocal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final EditText resetPassword = new EditText(v.getContext());
+
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Reset Password ?");
+                passwordResetDialog.setMessage("Enter New Password > 8 Characters long.");
+                passwordResetDialog.setView(resetPassword);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // extract the email and send reset link
+                        String newPassword = resetPassword.getText().toString();
+                        user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(MainActivity.this, "Password Reset Successfully.", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MainActivity.this, "Password Reset Failed.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+               });
+
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // close
+                    }
+                });
+
+                passwordResetDialog.create().show();
+
+            }
+        });*/
+
         changeProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),EditProfile.class));
-                Intent i = new Intent(v.getContext(), EditProfile.class);
-                i.putExtra("fullName", fullName.getText().toString());
-                i.putExtra("email", email.getText().toString());
-                i.putExtra("phone", phone.getText().toString());
-                i.putExtra("Country", country.getText().toString());
+                // open gallery
+                Intent i = new Intent(v.getContext(),EditProfile.class);
+                i.putExtra("fullName",fullName.getText().toString());
+                i.putExtra("email",email.getText().toString());
+                i.putExtra("phone",phone.getText().toString());
                 startActivity(i);
+//
 
             }
         });
 
+
+        Next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),CameraActivity.class));
+            }
+        });
+
     }
+
+
 
 
     public void logout(View view) {
@@ -236,6 +298,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return true;
     }
 
+
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu1:
@@ -243,6 +306,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 startActivity(intent);
         }
         return true;
+
+
     }
 }
 

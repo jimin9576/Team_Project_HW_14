@@ -101,13 +101,14 @@
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:rippleColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/createText"
+    <Button
+        android:id="@+id/CreateBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginTop="16dp"
-        android:text="New Here ?  Create Account"
+        android:background="@drawable/button_background"
         android:fontFamily="@font/cookierunblack"
+        android:text="New Here ?  Create Account"
         android:textColor="#070707"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,23 +124,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createText"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintTop_toBottomOf="@+id/CreateBtn"
+        app:layout_constraintVertical_bias="0.402" />
 
     <TextView
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Forgot Password ?"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/cookierunblack"
+        android:text="Forgot Password ?"
         android:textColor="#0B0B0A"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createText"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintTop_toBottomOf="@+id/CreateBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView7"

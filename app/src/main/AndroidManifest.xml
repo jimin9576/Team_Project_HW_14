@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Register"></activity>
         <activity android:name=".imgList"></activity>
         <activity android:name=".Setting"></activity>
         <activity android:name=".UserInfo_number.UserInfo_14" />
@@ -61,7 +62,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps2" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".Register"/>
+
         <activity android:name=".MainActivity" />
         <activity android:name=".EditProfile" />
         <provider

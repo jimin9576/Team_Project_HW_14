@@ -3,7 +3,6 @@ package com.androidapp.youjigom;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.androidapp.youjigom.MainActivity;
+import com.androidapp.youjigom.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,7 +42,6 @@ public class EditProfile extends AppCompatActivity {
     FirebaseUser user;
     StorageReference storageReference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +61,6 @@ public class EditProfile extends AppCompatActivity {
         profileEmail = findViewById(R.id.profileEmailAddress);
         profilePhone = findViewById(R.id.profilePhoneNo);
         profileImageView = findViewById(R.id.profileImageView);
-
-
         saveBtn = findViewById(R.id.saveProfileInfo);
 
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
@@ -84,7 +82,7 @@ public class EditProfile extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(profileFullName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty() || profilePhone.getText().toString().isEmpty() ){
+                if(profileFullName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty() || profilePhone.getText().toString().isEmpty()){
                     Toast.makeText(EditProfile.this, "One or Many fields are empty.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -98,20 +96,15 @@ public class EditProfile extends AppCompatActivity {
                         edited.put("email",email);
                         edited.put("fName",profileFullName.getText().toString());
                         edited.put("phone",profilePhone.getText().toString());
-
-
-
-
-
                         docRef.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(EditProfile.this, "Profile Updated", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();
                             }
                         });
-                        Toast.makeText(EditProfile.this, "Profile has been changed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProfile.this, "Email is changed.", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -128,11 +121,7 @@ public class EditProfile extends AppCompatActivity {
         profileFullName.setText(fullName);
         profilePhone.setText(phone);
 
-
-
-
-
-        Log.d(TAG, "onCreate: " + fullName + " " + email + " " + phone + "" );
+        Log.d(TAG, "onCreate: " + fullName + " " + email + " " + phone);
     }
 
 
@@ -175,7 +164,3 @@ public class EditProfile extends AppCompatActivity {
 
     }
 }
-
-
-
-
