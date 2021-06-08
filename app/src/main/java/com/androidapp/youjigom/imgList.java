@@ -51,11 +51,11 @@ public class imgList extends AppCompatActivity {
         fDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = fDatabase.getReference();
 
-        reference.child("users/abc").addValueEventListener(new ValueEventListener() {
+        reference.child("users/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    if (dataSnapshot.getKey().equals("fullName")){
+                    if (dataSnapshot.getKey().equals("senderName")){
                         user = dataSnapshot.getValue().toString();
                         items.add(user);
                         Log.d("TAG","items: "+user);
@@ -71,7 +71,6 @@ public class imgList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String data = (String)adapterView.getItemAtPosition(position);
-                //    imgMsg.setImageDrawable(null);
                 Log.d("TAG","text: "+data);
 
                 setContentView(R.layout.image);
@@ -79,7 +78,7 @@ public class imgList extends AppCompatActivity {
                 TextView txtNameGet = findViewById(R.id.txtNameGet);
                 ImageView imgGet = findViewById(R.id.imgGet);
 
-                reference.child("users/abc").addValueEventListener(new ValueEventListener() {
+                reference.child("users/").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -127,24 +126,5 @@ public class imgList extends AppCompatActivity {
 
             return v;
         }
-    }
-
-    public static byte[] binaryStringToByteArray(String s) {
-        int count = s.length() / 8;
-        byte[] b = new byte[count];
-        for (int i = 1; i < count; ++i) {
-            String t = s.substring((i - 1) * 8, i * 8);
-            b[i - 1] = binaryStringToByte(t);
-        }
-        return b;
-    }
-
-    public static byte binaryStringToByte(String s) {
-        byte ret = 0, total = 0;
-        for (int i = 0; i < 8; ++i) {
-            ret = (s.charAt(7 - i) == '1') ? (byte) (1 << i) : 0;
-            total = (byte) (ret | total);
-        }
-        return total;
     }
 }
