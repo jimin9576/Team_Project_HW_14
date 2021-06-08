@@ -52,9 +52,6 @@ public class EditProfile extends AppCompatActivity {
         String email = data.getStringExtra("email");
         String phone = data.getStringExtra("phone");
 
-
-
-
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         user = fAuth.getCurrentUser();

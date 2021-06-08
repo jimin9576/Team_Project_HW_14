@@ -48,21 +48,21 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+                String email = mEmail.getText().toString().trim(); // 사용자 이메일 인식
+                String password = mPassword.getText().toString().trim();// 사용자 패스워드 인식
 
                 if(TextUtils.isEmpty(email)){
-                    mEmail.setError("Email is Required.");
+                    mEmail.setError("Email is Required."); //이메일 작성칸에 이메일을 적지 않았을시 나오는 메시지
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)){
-                    mPassword.setError("Password is Required.");
+                    mPassword.setError("Password is Required."); //패스워드 작성칸에 패스워드를 적지 않았을시 나오는 메시지
                     return;
                 }
 
                 if(password.length() < 8){
-                    mPassword.setError("Password Must be >= 8 Characters");
+                    mPassword.setError("Password Must be >= 8 Characters"); //패스워드가 8자리 이상이 아닐시 나오는 메시지
                     return;
                 }
 

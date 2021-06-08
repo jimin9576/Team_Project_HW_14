@@ -20,6 +20,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YouJiGom">
+
+        <activity android:name=".Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".imgList"></activity>
         <activity android:name=".Setting"></activity>
         <activity android:name=".UserInfo_number.UserInfo_14" />
@@ -53,17 +61,9 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps2" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".EditProfile" />
-        <activity android:name=".Login" />
-        <activity android:name=".Register">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Register"/>
         <activity android:name=".MainActivity" />
-
+        <activity android:name=".EditProfile" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.androidapp.youjigom"
